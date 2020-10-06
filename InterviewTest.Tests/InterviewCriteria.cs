@@ -48,5 +48,15 @@ namespace InterviewTest.Tests
             var summer = new StringSummer();
             var output = summer.Add("1,\n");
         }
+
+        [TestMethod]
+        public void Step4_AllowCustomDelimiter()
+        {
+            
+            var summer = new StringSummer();
+            var output = summer.Add("//;\n1;2;3;4");
+
+            Assert.AreEqual(10, output);
+        }
     }
 }
