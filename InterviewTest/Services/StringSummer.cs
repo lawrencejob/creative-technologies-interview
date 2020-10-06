@@ -14,19 +14,21 @@ namespace InterviewTest.Services
 
             var delimiters = new char[] { ',', '\n'};
 
-            // deal with the special case of an empty input
-            if (input == "") {
-                return 0;
-            }
-
             // if there is a delimiter-specifying header in the file...
             if (input.StartsWith("//")) {
 
-                // extract the new delimiter
-                delimiters = new char[] { input[2] };
+                var split = input.Split('\n', 2);
 
-                // cut the delimiter section from the front of the string
-                input = input.Substring(4);
+                // extract the new delimiters (excluding //)
+                delimiters = split[0].Substring(2).ToCharArray();
+
+                // reset input to the 
+                input = split[1];
+            }
+
+            // deal with the special case of an empty input
+            if (input == "") {
+                return 0;
             }
 
             var numbersAsStrings = ParseNumbers(delimiters, input);

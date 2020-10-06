@@ -84,5 +84,14 @@ namespace InterviewTest.Tests
 
             Assert.AreEqual(15, output);
         }
+
+        [TestMethod]
+        public void Step7_AllowMultipleDelimiters()
+        {
+            var summer = new StringSummer();
+            var output = summer.Add("//*%\n1*2%3");
+
+            Assert.AreEqual(6, output);
+        }
     }
 }
