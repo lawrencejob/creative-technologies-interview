@@ -1,4 +1,4 @@
-namespace creative_technologies_interview.Services
+namespace InterviewTest.Services
 {
     interface IStringSummer
     {

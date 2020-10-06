@@ -1,6 +1,6 @@
-namespace creative_technologies_interview.Services
+namespace InterviewTest.Services
 {
-    class StringSummer : IStringSummer
+    public class StringSummer : IStringSummer
     {
         public int Calculate(string input) 
         {

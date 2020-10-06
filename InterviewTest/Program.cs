@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
-using creative_technologies_interview.Services;
+using InterviewTest.Services;
 
-namespace creative_technologies_interview
+namespace InterviewTest
 {
     class Program
     {
