@@ -21,7 +21,7 @@ namespace InterviewTest.Tests
 
         [DataTestMethod]
         [DataRow("1,2,3,4,5,6,7,8,9", 45)]
-        [DataRow("123,1354,34534,4654,1,2,3", 40671)]
+        [DataRow("123,54,534,465,1,2,3", 1182)] 
         public void Step2_AnyNumberOfNumbers(string input, int expected)
         {
             var summer = new StringSummer();
@@ -32,7 +32,7 @@ namespace InterviewTest.Tests
 
         [DataTestMethod]
         [DataRow("1,2,3\n4,5,6,7,8,9", 45)]
-        [DataRow("123,1354,34534,4654,1,2\n3", 40671)]
+        [DataRow("123,54,534,465,1,2\n3", 1182)]
         public void Step3_AllowNewLinesAndCommas(string input, int expected)
         {
             var summer = new StringSummer();
@@ -73,6 +73,16 @@ namespace InterviewTest.Tests
         {
             var summer = new StringSummer();
             var output = summer.Add("1,-5,-3,4,5");
+        }
+
+        [TestMethod]
+        public void Step6_IgnoreNumbersOver1000()
+        {
+
+            var summer = new StringSummer();
+            var output = summer.Add("2,1001,13");
+
+            Assert.AreEqual(15, output);
         }
     }
 }
