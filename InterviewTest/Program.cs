@@ -22,6 +22,8 @@ namespace InterviewTest
             var serviceProvider = new ServiceCollection()
                 .AddLogging()
                 .AddSingleton<IStringSummer, StringSummer>()
+                .AddSingleton<IDelimiterService, DelimiterService>()
+                .AddSingleton<IParserService, ParserService>()
                 .BuildServiceProvider();
 
             return serviceProvider;
