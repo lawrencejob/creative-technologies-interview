@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 
 namespace InterviewTest.Services
 {
@@ -30,6 +31,12 @@ namespace InterviewTest.Services
 
             var numbersAsStrings = ParseNumbers(delimiters, input);
 
+            // look for and handle any negative numbers
+            if (numbersAsStrings.Any( x => x < 0)) {
+
+                throw new Exception($"Negatives not allowed: {string.Join(", ", numbersAsStrings.Where(x => x < 0))}");
+            }
+
             return numbersAsStrings.Sum();
         }
 
@@ -38,8 +45,6 @@ namespace InterviewTest.Services
             // break up the string by the delimiters
             foreach (string current in input.Split(delimiters)) {
 
-                System.Console.WriteLine($"Reading {current}");
-
                 // make sure there are no double-delimiters (leaving empty strings after the split) e.g. "1,\n"
                 if (string.IsNullOrWhiteSpace(current))
                 {
@@ -47,7 +52,7 @@ namespace InterviewTest.Services
                 }
 
                 // try to interpret the integer, and (yield) return if possible
-                if (int.TryParse(current, NumberStyles.None, null, out var convertedInt)) {
+                if (int.TryParse(current, NumberStyles.Integer, null, out var convertedInt)) {
                     yield return convertedInt;
                 }
                 else {
