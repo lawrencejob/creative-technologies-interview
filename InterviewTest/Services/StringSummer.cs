@@ -37,7 +37,10 @@ namespace InterviewTest.Services
                 throw new Exception($"Negatives not allowed: {string.Join(", ", numbersAsStrings.Where(x => x < 0))}");
             }
 
-            return numbersAsStrings.Sum();
+            // sum all the numbers below 1000
+            return numbersAsStrings
+                .Where(x => x <= 1000)
+                .Sum();
         }
 
         private IEnumerable<int> ParseNumbers(char[] delimiters, string input) {
