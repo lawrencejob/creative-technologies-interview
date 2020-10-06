@@ -58,5 +58,21 @@ namespace InterviewTest.Tests
 
             Assert.AreEqual(10, output);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public void Step5_DisallowNegativeNumbers()
+        {
+            var summer = new StringSummer();
+            var output = summer.Add("1,-5,3,4,5");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public void Step5_DisallowMultipleNegativeNumbers()
+        {
+            var summer = new StringSummer();
+            var output = summer.Add("1,-5,-3,4,5");
+        }
     }
 }
