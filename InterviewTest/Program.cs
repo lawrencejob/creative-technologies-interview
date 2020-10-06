@@ -12,7 +12,7 @@ namespace InterviewTest
 
             var summer = serviceProvider.GetService<IStringSummer>();
 
-            Console.WriteLine(summer.Calculate("1,2,3"));
+            Console.WriteLine(summer.Add("1,2,3"));
 
             Console.WriteLine("Hello World!");
         }

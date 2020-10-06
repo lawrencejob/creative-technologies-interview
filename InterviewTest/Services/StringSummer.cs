@@ -1,10 +1,16 @@
+using System.Linq;
+
 namespace InterviewTest.Services
 {
     public class StringSummer : IStringSummer
     {
-        public int Calculate(string input) 
+        public int Add(string input) 
         {
-            return 0;
+            var numbers = input
+                .Split(',', System.StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse);
+
+            return numbers.Sum();
         }
     }
 }
