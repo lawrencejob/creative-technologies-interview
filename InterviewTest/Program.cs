@@ -1,10 +1,12 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
 using InterviewTest.Services;
+using Microsoft.Extensions.Configuration;
+using System.IO;
 
 namespace InterviewTest
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -17,14 +19,24 @@ namespace InterviewTest
             Console.WriteLine("Hello World!");
         }
 
-        static private ServiceProvider BuildServices()
+        public static ServiceProvider BuildServices()
         {
-            var serviceProvider = new ServiceCollection()
-                .AddLogging()
-                .AddSingleton<IStringSummer, StringSummer>()
-                .BuildServiceProvider();
+            var serviceCollection = new ServiceCollection();
 
-            return serviceProvider;
+            serviceCollection
+                .AddLogging()
+                .AddTransient<IStringSummer, StringSummer>()
+                .AddTransient<IDelimiterService, DelimiterService>()
+                .AddTransient<IParserService, ParserService>();
+
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+            serviceCollection.Configure<ParserOptions>(configuration.GetSection("ParserOptions"));
+
+            return serviceCollection.BuildServiceProvider();
         }
     }
 }
