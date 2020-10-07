@@ -1,5 +1,6 @@
 using System;
 using InterviewTest.Models;
+using Microsoft.Extensions.Options;
 
 namespace InterviewTest.Services 
 {
@@ -7,9 +8,18 @@ namespace InterviewTest.Services
     /// <summary>
     /// Service responsible for interpreting the delimiter header from a number string
     /// </summary>
-    internal class DelimiterService : IDelimiterService
+    public class DelimiterService : IDelimiterService
     {
         static readonly char[] DefaultDelimiters = new char[] { ',', '\n'};
+
+        private IOptions<ParserOptions> _appSettings;
+
+        public DelimiterService (
+            IOptions<ParserOptions> appSettings
+        )
+        {
+            _appSettings = appSettings;
+        }
 
         /// <summary>
         /// Extracts delimiters for a given string
@@ -18,8 +28,12 @@ namespace InterviewTest.Services
         /// <returns>A structure containing the set or default delimiters and the delimited body</returns>
         public DelimiterOutput ExtractDelimiters(string input)
         {
-
             var delimiters = DefaultDelimiters;
+
+            if (!string.IsNullOrEmpty(_appSettings.Value.DefaultDelimiters))
+            {
+                delimiters = _appSettings.Value.DefaultDelimiters.ToCharArray();
+            }
 
             // if there is a delimiter-specifying header in the file...
             if (input.StartsWith("//")) {

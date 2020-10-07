@@ -7,7 +7,7 @@ namespace InterviewTest.Services
     /// <summary>
     /// Service responsible for interpreting the delimiter header from a number string
     /// </summary>
-    interface IDelimiterService
+    public interface IDelimiterService
     {
         /// <summary>
         /// Extracts delimiters for a given string

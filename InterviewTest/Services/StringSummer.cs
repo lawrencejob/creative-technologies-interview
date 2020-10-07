@@ -9,12 +9,13 @@ namespace InterviewTest.Services
     public class StringSummer : IStringSummer
     {
 
-        IDelimiterService _delimiterService;
-        IParserService _parserService;
+        private IDelimiterService _delimiterService;
+        private IParserService _parserService;
 
-        StringSummer(DelimiterService delimiterService)
+        public StringSummer(IDelimiterService delimiterService, IParserService parserService)
         {
             _delimiterService = delimiterService;
+            _parserService = parserService;
         }
 
         public int Add(string input) 

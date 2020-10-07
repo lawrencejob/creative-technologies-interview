@@ -8,7 +8,7 @@ namespace InterviewTest.Services
     /// <summary>
     /// Service responsible for parsing numbers from a string
     /// </summary>
-    interface IParserService
+    public interface IParserService
     {
 
         /// <summary>

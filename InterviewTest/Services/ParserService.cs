@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using InterviewTest.Models;
 
 namespace InterviewTest.Services 
 {
@@ -9,7 +8,7 @@ namespace InterviewTest.Services
     /// <summary>
     /// Service responsible for parsing numbers from a string
     /// </summary>
-    internal class ParserService : IParserService
+    public class ParserService : IParserService
     {
 
         /// <summary>

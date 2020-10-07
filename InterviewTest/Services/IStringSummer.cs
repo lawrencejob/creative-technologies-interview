@@ -1,6 +1,6 @@
 namespace InterviewTest.Services
 {
-    interface IStringSummer
+    public interface IStringSummer
     {
         int Add(string input);
     }

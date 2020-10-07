@@ -1,6 +1,6 @@
 namespace InterviewTest.Models 
 {
-    struct DelimiterOutput
+    public struct DelimiterOutput
     {
         /// <summary>
         /// The part of the string left after extracting delimiters from it
